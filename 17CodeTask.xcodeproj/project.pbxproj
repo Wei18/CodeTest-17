@@ -15,6 +15,10 @@
 		B6C5372922E85484008C0D50 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5372822E85484008C0D50 /* ViewControllerFactory.swift */; };
 		B6C5372C22E854AA008C0D50 /* SearchUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5372B22E854AA008C0D50 /* SearchUserViewModel.swift */; };
 		B6C5372F22E854CA008C0D50 /* SearchUserViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5372E22E854CA008C0D50 /* SearchUserViewModelImpl.swift */; };
+		B6C5373422E85704008C0D50 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5373322E85704008C0D50 /* ReusableProtocol.swift */; };
+		B6C5373722E85943008C0D50 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5373522E85943008C0D50 /* UserCollectionViewCell.swift */; };
+		B6C5373822E85943008C0D50 /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6C5373622E85943008C0D50 /* UserCollectionViewCell.xib */; };
+		B6C5373A22E859C4008C0D50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5373922E859C4008C0D50 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		B6C5372822E85484008C0D50 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		B6C5372B22E854AA008C0D50 /* SearchUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserViewModel.swift; sourceTree = "<group>"; };
 		B6C5372E22E854CA008C0D50 /* SearchUserViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserViewModelImpl.swift; sourceTree = "<group>"; };
+		B6C5373322E85704008C0D50 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		B6C5373522E85943008C0D50 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6C5373622E85943008C0D50 /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
+		B6C5373922E859C4008C0D50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,7 @@
 		B6C536F422E84F42008C0D50 /* 17CodeTask */ = {
 			isa = PBXGroup;
 			children = (
+				B6C5373222E856F7008C0D50 /* Common */,
 				B6C5372D22E854AF008C0D50 /* Model */,
 				B6C5372A22E854A1008C0D50 /* SearchUserView */,
 				B6C536F522E84F42008C0D50 /* AppDelegate.swift */,
@@ -76,6 +85,8 @@
 				B6C5372B22E854AA008C0D50 /* SearchUserViewModel.swift */,
 				B6C5372E22E854CA008C0D50 /* SearchUserViewModelImpl.swift */,
 				B6C536F722E84F42008C0D50 /* SearchUserViewController.swift */,
+				B6C5373522E85943008C0D50 /* UserCollectionViewCell.swift */,
+				B6C5373622E85943008C0D50 /* UserCollectionViewCell.xib */,
 			);
 			path = SearchUserView;
 			sourceTree = "<group>";
@@ -85,8 +96,17 @@
 			children = (
 				B6C5372622E85467008C0D50 /* Server.swift */,
 				B6C5372822E85484008C0D50 /* ViewControllerFactory.swift */,
+				B6C5373922E859C4008C0D50 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B6C5373222E856F7008C0D50 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B6C5373322E85704008C0D50 /* ReusableProtocol.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6C5373822E85943008C0D50 /* UserCollectionViewCell.xib in Resources */,
 				B6C5370322E84F46008C0D50 /* LaunchScreen.storyboard in Resources */,
 				B6C5370022E84F46008C0D50 /* Assets.xcassets in Resources */,
 			);
@@ -160,9 +181,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6C536F822E84F42008C0D50 /* SearchUserViewController.swift in Sources */,
+				B6C5373422E85704008C0D50 /* ReusableProtocol.swift in Sources */,
 				B6C5372C22E854AA008C0D50 /* SearchUserViewModel.swift in Sources */,
 				B6C5372922E85484008C0D50 /* ViewControllerFactory.swift in Sources */,
 				B6C5372722E85467008C0D50 /* Server.swift in Sources */,
+				B6C5373A22E859C4008C0D50 /* User.swift in Sources */,
+				B6C5373722E85943008C0D50 /* UserCollectionViewCell.swift in Sources */,
 				B6C536F622E84F42008C0D50 /* AppDelegate.swift in Sources */,
 				B6C5372F22E854CA008C0D50 /* SearchUserViewModelImpl.swift in Sources */,
 			);
