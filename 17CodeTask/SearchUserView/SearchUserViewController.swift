@@ -12,11 +12,27 @@ class SearchUserViewController: UICollectionViewController {
     
     var vm: SearchUserViewModel!
     
+    private let cellId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
-        // Do any additional setup after loading the view.
+        collectionView.register(.user)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+        return vm.items.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(.user, for: indexPath)
+        let aCell = cell as? UserCollectionViewCell
+        let itemData = vm.items[indexPath.item]
+        aCell?.bind(itemData)
+        return cell
+    }
+
+    
 }
 
 extension SearchUserViewController: SearchUserViewModelDelegate{

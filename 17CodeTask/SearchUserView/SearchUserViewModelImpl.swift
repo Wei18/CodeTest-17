@@ -9,7 +9,7 @@
 import Foundation
 
 class SearchUserViewModelImpl: SearchUserViewModel{
-    var items: [Any] = []
+    var items: [User] = []
     
     func pullToRefresh() {
         delegate?.reloadView()

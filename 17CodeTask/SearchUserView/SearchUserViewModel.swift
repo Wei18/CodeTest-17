@@ -13,7 +13,7 @@ protocol SearchUserViewModelDelegate: class{
 }
 
 protocol SearchUserViewModel{
-    var items: [Any] { get set }
+    var items: [User] { get set }
     func pullToRefresh()
     func loadMore()
     func search(text: String)
