@@ -13,8 +13,10 @@ class ViewControllerFactory{
     static let shared = ViewControllerFactory()
     
     func getSearchUserVC() -> UIViewController{
+        let nav = UINavigationController()
         let vc = SearchUserViewController()
         vc.vm = SearchUserViewModelImpl()
-        return vc
+        nav.pushViewController(vc, animated: false)
+        return nav
     }
 }

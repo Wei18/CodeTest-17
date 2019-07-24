@@ -12,12 +12,20 @@ class SearchUserViewController: UICollectionViewController {
     
     var vm: SearchUserViewModel!
     
-    private let cellId = ""
+    private lazy var searchController: UISearchController = {
+        $0.searchResultsUpdater = self
+        $0.dimsBackgroundDuringPresentation = false
+        return $0
+    }(UISearchController(searchResultsController: nil))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.delegate = self
         collectionView.register(.user)
+        
+        definesPresentationContext = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.searchController = searchController
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -32,11 +40,20 @@ class SearchUserViewController: UICollectionViewController {
         return cell
     }
 
-    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath){
+        vm.loadMore(willDisplayItem: indexPath.item)
+    }
 }
 
 extension SearchUserViewController: SearchUserViewModelDelegate{
     func reloadView() {
-        self.collectionView.reloadData()
+        collectionView.reloadData()
+    }
+}
+
+extension SearchUserViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        let text = searchController.searchBar.text
+        vm.search(text: text)
     }
 }
