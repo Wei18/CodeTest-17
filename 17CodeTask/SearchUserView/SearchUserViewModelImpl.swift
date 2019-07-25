@@ -30,7 +30,7 @@ class SearchUserViewModelImpl: SearchUserViewModel{
     }
     
     private func fetch(offset: Int) {
-        guard isNotLoading, let name = currentSearchingName else { return }
+        guard isNotLoading, let name = currentSearchingName, !name.isEmpty else { return }
         isNotLoading = false
         server.searchUser(name: name, offset: offset) { [weak self] (users) in
             if offset == 0 {

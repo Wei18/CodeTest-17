@@ -8,9 +8,15 @@
 
 import UIKit
 
-class SearchUserViewController: UICollectionViewController {
+class SearchUserViewController: UIViewController {
     
     var vm: SearchUserViewModel!
+    
+    @IBOutlet private var collectionView: UICollectionView!
+    
+    private var flowLayout: UICollectionViewFlowLayout? {
+        return collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+    }
     
     private lazy var searchController: UISearchController = {
         $0.searchResultsUpdater = self
@@ -20,19 +26,40 @@ class SearchUserViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .lightGray
+        collectionView.backgroundColor = .lightGray
+        
         vm.delegate = self
         collectionView.register(.user)
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         definesPresentationContext = true
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "lb_search_user_title".localized
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        
+        let inset: CGFloat = 16
+        flowLayout?.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        flowLayout?.scrollDirection = .vertical
+        flowLayout?.minimumLineSpacing = inset
+        flowLayout?.minimumInteritemSpacing = inset
+        flowLayout?.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+        
+        DispatchQueue.main.async {
+            self.searchController.searchBar.becomeFirstResponder()
+        }
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+}
+
+extension SearchUserViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return vm.items.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(.user, for: indexPath)
         let aCell = cell as? UserCollectionViewCell
         let itemData = vm.items[indexPath.item]
@@ -40,20 +67,27 @@ class SearchUserViewController: UICollectionViewController {
         return cell
     }
 
-    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath){
-        vm.loadMore(willDisplayItem: indexPath.item)
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath){
+        DispatchQueue(label: "fetch", qos: .utility).async {
+            self.vm.loadMore(willDisplayItem: indexPath.item)
+        }
     }
 }
 
 extension SearchUserViewController: SearchUserViewModelDelegate{
     func reloadView() {
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            self.flowLayout?.invalidateLayout()
+        }
     }
 }
 
 extension SearchUserViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         let text = searchController.searchBar.text
-        vm.search(text: text)
+        DispatchQueue(label: "fetch", qos: .utility).async {
+            self.vm.search(text: text)
+        }
     }
 }

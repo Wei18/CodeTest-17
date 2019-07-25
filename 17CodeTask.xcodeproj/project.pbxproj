@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6ABFB7422E95195002D7992 /* SearchUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6ABFB7322E95194002D7992 /* SearchUserViewController.xib */; };
+		B6ABFB7722E95439002D7992 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ABFB7622E95439002D7992 /* String+Ext.swift */; };
 		B6C536F622E84F42008C0D50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C536F522E84F42008C0D50 /* AppDelegate.swift */; };
 		B6C536F822E84F42008C0D50 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C536F722E84F42008C0D50 /* SearchUserViewController.swift */; };
 		B6C5370022E84F46008C0D50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C536FF22E84F46008C0D50 /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		412DE1419506A9177172DB4C /* Pods-17CodeTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-17CodeTask.debug.xcconfig"; path = "Target Support Files/Pods-17CodeTask/Pods-17CodeTask.debug.xcconfig"; sourceTree = "<group>"; };
+		B6ABFB7322E95194002D7992 /* SearchUserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchUserViewController.xib; sourceTree = "<group>"; };
+		B6ABFB7622E95439002D7992 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		B6C536F222E84F42008C0D50 /* 17CodeTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 17CodeTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C536F522E84F42008C0D50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6C536F722E84F42008C0D50 /* SearchUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 			children = (
 				B6C5372B22E854AA008C0D50 /* SearchUserViewModel.swift */,
 				B6C5372E22E854CA008C0D50 /* SearchUserViewModelImpl.swift */,
+				B6ABFB7322E95194002D7992 /* SearchUserViewController.xib */,
 				B6C536F722E84F42008C0D50 /* SearchUserViewController.swift */,
 				B6C5373522E85943008C0D50 /* UserCollectionViewCell.swift */,
 				B6C5373622E85943008C0D50 /* UserCollectionViewCell.xib */,
@@ -126,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				B6C5373322E85704008C0D50 /* ReusableProtocol.swift */,
+				B6ABFB7622E95439002D7992 /* String+Ext.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -190,6 +196,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6ABFB7422E95195002D7992 /* SearchUserViewController.xib in Resources */,
 				B6C5373822E85943008C0D50 /* UserCollectionViewCell.xib in Resources */,
 				B6C5370022E84F46008C0D50 /* Assets.xcassets in Resources */,
 			);
@@ -259,6 +266,7 @@
 				B6C5373A22E859C4008C0D50 /* User.swift in Sources */,
 				B6C5373722E85943008C0D50 /* UserCollectionViewCell.swift in Sources */,
 				B6C536F622E84F42008C0D50 /* AppDelegate.swift in Sources */,
+				B6ABFB7722E95439002D7992 /* String+Ext.swift in Sources */,
 				B6C5372F22E854CA008C0D50 /* SearchUserViewModelImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
