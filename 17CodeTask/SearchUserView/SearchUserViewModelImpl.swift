@@ -33,13 +33,16 @@ class SearchUserViewModelImpl: SearchUserViewModel{
         guard isNotLoading, let name = currentSearchingName, !name.isEmpty else { return }
         isNotLoading = false
         server.searchUser(name: name, offset: offset) { [weak self] (users) in
+            guard let `self` = self else { return }
             if offset == 0 {
-                self?.items = users
+                self.items = users
+                self.delegate?.reload()
             }else{
-                self?.items += users
+                let (start, end) = (self.items.count, self.items.count + users.count)
+                self.items += users
+                self.delegate?.insert(from: start, to: end)
             }
-            self?.delegate?.reloadView()
-            self?.isNotLoading = true
+            self.isNotLoading = true
         }
     }
 }

@@ -75,11 +75,16 @@ extension SearchUserViewController: UICollectionViewDelegate, UICollectionViewDa
 }
 
 extension SearchUserViewController: SearchUserViewModelDelegate{
-    func reloadView() {
+    func reload(){
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            self.flowLayout?.invalidateLayout()
         }
+    }
+    func insert(from s: Int, to l: Int){
+        let indexPaths = (s..<l).map { IndexPath(item: $0, section: 0) }
+        collectionView.performBatchUpdates({ [weak self] in
+            self?.collectionView.insertItems(at: indexPaths)
+            }, completion: nil)
     }
 }
 

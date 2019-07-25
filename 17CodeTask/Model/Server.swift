@@ -27,11 +27,16 @@ class Server{
         
         let r = Alamofire.request(url, method: .get, parameters: dict, encoding: URLEncoding.default, headers: nil)
         r.responseData { dr in
-            guard let data = dr.data else { return }
+            guard let data = dr.data else {
+                result([])
+                return
+            }
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let response = try? decoder.decode(Response<User>.self, from: data)
-            guard let users = response?.items else { return }
+            guard let users = response?.items else {
+                result([])
+                return }
             result(users)
         }
     }

@@ -9,7 +9,8 @@
 import Foundation
 
 protocol SearchUserViewModelDelegate: class{
-    func reloadView()
+    func reload()
+    func insert(from s: Int, to l: Int)
 }
 
 protocol SearchUserViewModel{
